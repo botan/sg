@@ -1,10 +1,9 @@
 Package: sg
-Title: What the Package Does (One Line, Title Case)
+Title: 'SendGrid' Email API Client
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+    person("Botan", "Ağın", , "aginbotan@gmail.com", role = c("aut", "cre"))
+Description: Minimalistic 'SendGrid' Email API client for sending emails.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
