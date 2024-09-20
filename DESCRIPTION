@@ -1,6 +1,6 @@
 Package: sg
 Title: 'SendGrid' Email API Client
-Version: 0.1.0
+Version: 0.1.0.9000
 Authors@R: 
     person("Botan", "Ağın", , "aginbotan@gmail.com", role = c("aut", "cre"))
 Description: Minimalistic 'SendGrid' Email API client for creating and sending emails. 
