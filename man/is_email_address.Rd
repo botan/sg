@@ -15,10 +15,4 @@ A logical value.
 \description{
 Check if a string is in a valid email format
 }
-\examples{
-sg:::is_email_address("valid.email@example.com")
-sg:::is_email_address("another-valid-email@domain.org")
-sg:::is_email_address("invalid-email@com")
-sg:::is_email_address("invalid.email@domain")
-}
 \keyword{internal}

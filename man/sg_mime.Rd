@@ -50,7 +50,7 @@ A MIME object.
 Methods for creating and sending MIME messages.
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontrun{
   sg_mime() |>
     sg_from("sender@example.com") |>
     sg_to("recipient1@example.com", "recipient2@example.com") |>
@@ -60,5 +60,5 @@ Methods for creating and sending MIME messages.
     sg_body("Hello from sg!") |>
     sg_attachments("path/to/file1.csv", "path/to/file2.pdf") |>
     sg_send()
-\dontshow{\}) # examplesIf}
+}
 }

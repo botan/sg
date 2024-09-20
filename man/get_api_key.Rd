@@ -15,9 +15,4 @@ api_key
 \description{
 Get API key for auth.
 }
-\examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-  sg:::get_api_key()
-\dontshow{\}) # examplesIf}
-}
 \keyword{internal}

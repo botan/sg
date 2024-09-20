@@ -5,7 +5,8 @@
 #'
 #' @return A MIME object.
 #' @export
-#' @examplesIf FALSE
+#' @examples
+#' \dontrun{
 #'   sg_mime() |>
 #'     sg_from("sender@example.com") |>
 #'     sg_to("recipient1@example.com", "recipient2@example.com") |>
@@ -15,6 +16,7 @@
 #'     sg_body("Hello from sg!") |>
 #'     sg_attachments("path/to/file1.csv", "path/to/file2.pdf") |>
 #'     sg_send()
+#' }
 sg_mime <- function() {
   structure(
     list(
@@ -216,8 +218,6 @@ sg_send.mime <- function(x) {
 #' @param api_key SendGrid API key.
 #' @return api_key
 #' @keywords internal
-#' @examplesIf FALSE
-#'   sg:::get_api_key()
 get_api_key <- function(api_key = Sys.getenv("SENDGRID_API_KEY")) {
   if (!nzchar(api_key)) {
     rlang::abort("No API key found, please supply with api_key argument or with SENDGRID_API_KEY env var")
@@ -231,11 +231,6 @@ get_api_key <- function(api_key = Sys.getenv("SENDGRID_API_KEY")) {
 #' @param email A character string.
 #' @return A logical value.
 #' @keywords internal
-#' @examples
-#' sg:::is_email_address("valid.email@example.com")
-#' sg:::is_email_address("another-valid-email@domain.org")
-#' sg:::is_email_address("invalid-email@com")
-#' sg:::is_email_address("invalid.email@domain")
 is_email_address <- function(email) {
   email_pattern <- "^[[:alnum:]._%+-]+@[[:alnum:].-]+\\.[[:alpha:]]{2,}$"
   grepl(email_pattern, email)
