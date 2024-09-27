@@ -28,7 +28,7 @@ sg_body(x, body, type = "text/html")
 
 sg_attachments(x, ...)
 
-sg_send(x)
+sg_send(x, api_key = Sys.getenv("SENDGRID_API_KEY"))
 }
 \arguments{
 \item{x}{A MIME object.}
@@ -42,6 +42,8 @@ sg_send(x)
 \item{body}{The body content of the email.}
 
 \item{type}{The content type (e.g., "text/plain")}
+
+\item{api_key}{SendGrid API key. Defaults to the environment variable \code{SENDGRID_API_KEY} if not provided.}
 }
 \value{
 A MIME object.
