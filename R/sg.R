@@ -59,7 +59,7 @@ sg_to <- function(x, ...) {
 
 #' @export
 sg_to.mime <- function(x, ...) {
-  emails <- rlang::list2(...)
+  emails <- unlist(rlang::list2(...), recursive = FALSE)
   x$to <- lapply(emails, \(email) list(email = email))
   x
 }
@@ -73,7 +73,7 @@ sg_cc <- function(x, ...) {
 
 #' @export
 sg_cc.mime <- function(x, ...) {
-  emails <- rlang::list2(...)
+  emails <- unlist(rlang::list2(...), recursive = FALSE)
   x$cc <- lapply(emails, \(email) list(email = email))
   x
 }
@@ -87,7 +87,7 @@ sg_bcc <- function(x, ...) {
 
 #' @export
 sg_bcc.mime <- function(x, ...) {
-  emails <- rlang::list2(...)
+  emails <- unlist(rlang::list2(...), recursive = FALSE)
   x$bcc <- lapply(emails, \(email) list(email = email))
   x
 }
@@ -130,7 +130,7 @@ sg_attachments <- function(x, ...) {
 
 #' @export
 sg_attachments.mime <- function(x, ...) {
-  paths <- rlang::list2(...)
+  paths <- unlist(rlang::list2(...), recursive = FALSE)
 
   attachments <-
     lapply(paths, function(path) {
