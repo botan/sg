@@ -152,13 +152,14 @@ sg_attachments.mime <- function(x, ...) {
 
 #' Generic for sending the email
 #' @rdname sg_mime
+#' @param api_key SendGrid API key. Defaults to the environment variable `SENDGRID_API_KEY` if not provided.
 #' @export
-sg_send <- function(x) {
+sg_send <- function(x, api_key = Sys.getenv("SENDGRID_API_KEY")) {
   UseMethod("sg_send")
 }
 
 #' @export
-sg_send.mime <- function(x) {
+sg_send.mime <- function(x, api_key = Sys.getenv("SENDGRID_API_KEY")) {
   if (is.null(x$from)) {
     rlang::abort("The 'from' field is required.")
   }
@@ -181,6 +182,10 @@ sg_send.mime <- function(x) {
   validate_recipients(x$cc, "cc")
   validate_recipients(x$bcc, "bcc")
 
+  if (!nzchar(api_key)) {
+    rlang::abort("No API key found, please supply with api_key argument or with SENDGRID_API_KEY env var")
+  }
+
   personalizations <-
     rlang::list2(
       to = x$to,
@@ -201,7 +206,7 @@ sg_send.mime <- function(x) {
 
   req <-
     httr2::request("https://api.sendgrid.com/v3/mail/send") |>
-    httr2::req_auth_bearer_token(get_api_key()) |>
+    httr2::req_auth_bearer_token(api_key) |>
     httr2::req_body_json(email, auto_unbox = TRUE)
 
   resp <- req |> httr2::req_perform()
@@ -211,19 +216,6 @@ sg_send.mime <- function(x) {
   }
 
   invisible(email)
-}
-
-#' Get API key for auth.
-#'
-#' @param api_key SendGrid API key.
-#' @return api_key
-#' @keywords internal
-get_api_key <- function(api_key = Sys.getenv("SENDGRID_API_KEY")) {
-  if (!nzchar(api_key)) {
-    rlang::abort("No API key found, please supply with api_key argument or with SENDGRID_API_KEY env var")
-  }
-
-  api_key
 }
 
 #' Check if a string is in a valid email format
