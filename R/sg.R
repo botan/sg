@@ -195,7 +195,7 @@ sg_send.mime <- function(x) {
       from = x$from,
       subject = x$subject,
       content = list(x$content),
-      attachments = if (!is.null(x$attachments)) x$attachments else NULL
+      attachments = if (!is.null(x$attachments) && length(x$attachments) > 0) x$attachments else NULL
     ) |>
     Filter(Negate(is.null), x = _)
 
