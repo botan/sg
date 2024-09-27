@@ -11,7 +11,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 status](https://www.r-pkg.org/badges/version/sg)](https://CRAN.R-project.org/package=sg)
 <!-- badges: end -->
 
-Minimalistic SendGrid Email API client for sending emails with R.
+Simple SendGrid Email API client for sending emails with R.
 
 ## Installation
 
